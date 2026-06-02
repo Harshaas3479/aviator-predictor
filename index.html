@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviator Predictor - Crash Game Analysis</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎲 Aviator Predictor</h1>
+            <p>Advanced Crash Game Analysis & Prediction System</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Input Section -->
+            <div class="section input-section">
+                <h2>📊 Input Round Data</h2>
+                <div class="form-group">
+                    <label>Round ID:</label>
+                    <input type="text" id="roundId" placeholder="e.g., 12967445">
+                </div>
+                <div class="form-group">
+                    <label>Multiplier Value (x):</label>
+                    <input type="number" id="multiplier" placeholder="e.g., 2.64" step="0.01" min="1">
+                </div>
+                <div class="form-group">
+                    <label>Historical Data (comma-separated x values):</label>
+                    <textarea id="historicalData" placeholder="e.g., 1.08, 2.06, 3.19, 3.81, 1.35" rows="4"></textarea>
+                </div>
+                <button id="predictBtn" class="btn btn-primary">🔮 Analyze & Predict</button>
+            </div>
+
+            <!-- Results Section -->
+            <div class="section results-section">
+                <h2>📈 Prediction Results</h2>
+                <div id="resultsContainer" class="hidden">
+                    <div class="result-card">
+                        <h3>Current Round Analysis</h3>
+                        <div class="stat">
+                            <span class="label">Round ID:</span>
+                            <span class="value" id="displayRoundId">-</span>
+                        </div>
+                        <div class="stat">
+                            <span class="label">Current Multiplier:</span>
+                            <span class="value" id="displayMultiplier">-</span>
+                        </div>
+                        <div class="stat">
+                            <span class="label">Volatility Risk:</span>
+                            <span class="value" id="volatilityRisk">-</span>
+                        </div>
+                    </div>
+
+                    <div class="result-card">
+                        <h3>Statistical Analysis</h3>
+                        <div class="stat">
+                            <span class="label">Average Multiplier:</span>
+                            <span class="value" id="avgMultiplier">-</span>
+                        </div>
+                        <div class="stat">
+                            <span class="label">Maximum Multiplier:</span>
+                            <span class="value" id="maxMultiplier">-</span>
+                        </div>
+                        <div class="stat">
+                            <span class="label">Minimum Multiplier:</span>
+                            <span class="value" id="minMultiplier">-</span>
+                        </div>
+                        <div class="stat">
+                            <span class="label">Standard Deviation:</span>
+                            <span class="value" id="stdDev">-</span>
+                        </div>
+                    </div>
+
+                    <div class="result-card">
+                        <h3>🔮 Next Round Prediction</h3>
+                        <div class="stat">
+                            <span class="label">Predicted Multiplier Range:</span>
+                            <span class="value" id="predictedRange">-</span>
+                        </div>
+                        <div class="stat">
+                            <span class="label">Confidence Level:</span>
+                            <span class="value" id="confidenceLevel">-</span>
+                        </div>
+                        <div class="stat">
+                            <span class="label">Risk Assessment:</span>
+                            <span class="value" id="riskAssessment">-</span>
+                        </div>
+                    </div>
+
+                    <div class="result-card">
+                        <h3>💡 Recommendations</h3>
+                        <div id="recommendations" class="recommendations-list"></div>
+                    </div>
+                </div>
+                <div id="emptyState" class="empty-state">
+                    <p>Enter round data and click "Analyze & Predict" to see results</p>
+                </div>
+            </div>
+
+            <!-- Chart Section -->
+            <div class="section chart-section">
+                <h2>📉 Multiplier History Chart</h2>
+                <canvas id="multiplierChart"></canvas>
+            </div>
+
+            <!-- Data History -->
+            <div class="section history-section">
+                <h2>📋 Round History</h2>
+                <div id="historyTable" class="table-container hidden">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Round ID</th>
+                                <th>Multiplier</th>
+                                <th>Status</th>
+                                <th>Timestamp</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyBody"></tbody>
+                    </table>
+                </div>
+                <div id="emptyHistory" class="empty-state">
+                    <p>No history recorded yet</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="predictor.js"></script>
+</body>
+</html>
